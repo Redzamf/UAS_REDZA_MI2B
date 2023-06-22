@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendataan Sekolah</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black;
+            background: rgb(238,174,202);
+            background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4c51bf;
+        }
+
+        .form-button {
+            display: inline-block;
+            background-color: #94bbe9;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-button:hover {
+            background-color: #94bbe9;
+        }
+
+        .data-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 3px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #1cefff;
+            font-weight: bold;
+        }
+
+        .data-table td.actions {
+            text-align: center;
+        }
+
+        .data-table td.actions button {
+            background-color: #4a5568;
+            color: black;
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .data-table td.actions button:hover {
+            background-color: #374151;
+        }
+
+        .form-button {
+            display: inline-block;
+            background-color: #1cefff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-button:hover {
+            background-color: #1cefff;
+        }
+
+        .form-button:focus {
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .data-table td.actions button {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .data-table td.actions button.edit {
+            background-color:white ;
+            color: #fff;
+        }
+
+        .data-table td.actions button.edit:hover {
+            background-color: #1cefff;
+        }
+
+        .data-table td.actions button.delete {
+            background-color: #e53e3e;
+            color: #fff;
+        }
+
+        .data-table td.actions button.delete:hover {
+            background-color: #c53030;
+        }
+        .edit-button {
+        background-color: #4c51bf;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .actions-container {
+        display: flex;
+        gap: 8px;
+    }
+
+    .edit-button:hover {
+        background-color: #1cefff;
+    }
+
+    .delete-button {
+        background-color: #1cefff;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .delete-button:hover {
+        background-color: #4c51bf;
+    }
+    .table-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .table-title {
+        flex-grow: 1;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mt-4 mb-8">Pendataan Sekolah</h1>
+        <form class="mb-8">
+            <div class="mb-4">
+                <label for="nama_sekolah" class="form-label">Nama Sekolah:</label>
+                <input type="text" id="nama_sekolah" name="nama_sekolah" class="form-input">
+            </div>
+
+            <div class="mb-4">
+                <label for="kepala_sekolah" class="form-label">Kepala Sekolah:</label>
+                <input type="text" id="kepala_sekolah" name="kepala_sekolah" class="form-input">
+            </div>
+
+            <div class="mb-4">
+                <label for="akreditasi" class="form-label">Akreditasi:</label>
+                <input type="text" id="akreditasi" name="akreditasi" class="form-input">
+            </div>
+
+            <div class="mb-4">
+                <label for="tahun_berdiri" class="form-label">Tahun Berdiri:</label>
+                <input type="text" id="tahun_berdiri" name="tahun_berdiri" class="form-input">
+            </div>
+
+            <div class="mb-4">
+                <label for="jumlah_siswa" class="form-label">Jumlah Siswa:</label>
+                <input type="text" id="jumlah_siswa" name="jumlah_siswa" class="form-input">
+            </div>
+
+            <button type="button" onclick="saveData()" id="button" class="form-button">Save</button>
+        </form>
+    </div>
+
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">Data Sekolah Di Indonesia</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">No.</th>
+                    <th class="px-4 py-2">Nama Sekolah</th>
+                    <th class="px-4 py-2">Kepala Sekolah</th>
+                    <th class="px-4 py-2">Akreditasi</th>
+                    <th class="px-4 py-2">Tahun Berdiri</th>
+                    <th class="px-4 py-2">Jumlah Siswa</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="schools"></tbody>
+        </table>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        const saveData = async () => {
+            let nama_sekolahForm = document.getElementById("nama_sekolah").value;
+            let kepala_sekolahForm = document.getElementById("kepala_sekolah").value;
+            let akreditasiForm = document.getElementById("akreditasi").value;
+            let tahun_berdiriForm = document.getElementById("tahun_berdiri").value;
+            let jumlah_siswaForm = document.getElementById("jumlah_siswa").value;
+            await axios.post('http://103.163.110.11:3031/schools', {
+                nama_sekolah: nama_sekolahForm,
+                kepala_sekolah: kepala_sekolahForm,
+                akreditasi: akreditasiForm,
+                tahun_berdiri: tahun_berdiriForm,
+                jumlah_siswa: jumlah_siswaForm
+            })
+                .then((response) => {
+                    alert('Data berhasil disimpan!');
+                    getSchools();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
+
+        const getSchools = async () => {
+            await axios.get('http://103.163.110.11:3031/schools')
+                .then((response) => {
+                    let bucket = '';
+                    let schools = response.data;
+                    schools.forEach((school, i) => {
+                        bucket += `
+                            <tr>
+                                <td>${i + 1}</td>
+                                <td>${school.nama_sekolah}</td>
+                                <td>${school.kepala_sekolah}</td>
+                                <td>${school.akreditasi}</td>
+                                <td>${school.tahun_berdiri}</td>
+                                <td>${school.jumlah_siswa}</td>
+                                <td>
+                                    <div class="actions-container">
+                                        <button onclick="editData('${school.id}','${school.nama_sekolah}','${school.kepala_sekolah}','${school.akreditasi}','${school.tahun_berdiri}','${school.jumlah_siswa}')" class="edit-button">Edit</button>
+                                        <button onclick="deleteData(${school.id})" class="delete-button">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    document.getElementById('schools').innerHTML = bucket;
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
+        getSchools();
+
+        const deleteData = async (id) => {
+            await axios.delete(`http://103.163.110.11:3031/schools/${id}`)
+                .then((response) => {
+                    alert('Data berhasil dihapus');
+                    getSchools();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
+
+        const editData = (id, nama_sekolah, kepala_sekolah, akreditasi, tahun_berdiri, jumlah_siswa) => {
+            document.getElementById('nama_sekolah').value = nama_sekolah;
+            document.getElementById('kepala_sekolah').value = kepala_sekolah;
+            document.getElementById('akreditasi').value = akreditasi;
+            document.getElementById('tahun_berdiri').value = tahun_berdiri;
+            document.getElementById('jumlah_siswa').value = jumlah_siswa;
+            document.getElementById('button').innerText = 'Update';
+            document.getElementById('button').setAttribute('onclick', `updateData(${id})`);
+        }
+
+        const updateData = async (id) => {
+            let nama_sekolahForm = document.getElementById("nama_sekolah").value;
+            let kepala_sekolahForm = document.getElementById("kepala_sekolah").value;
+            let akreditasiForm = document.getElementById("akreditasi").value;
+            let tahun_berdiriForm = document.getElementById("tahun_berdiri").value;
+            let jumlah_siswaForm = document.getElementById("jumlah_siswa").value;
+            await axios
+                .patch(`http://103.163.110.11:3031/schools/${id}`, {
+                    nama_sekolah: nama_sekolahForm,
+                    kepala_sekolah: kepala_sekolahForm,
+                    akreditasi: akreditasiForm,
+                    tahun_berdiri: tahun_berdiriForm,
+                    jumlah_siswa: jumlah_siswaForm,
+                })
+                .then((response) => {
+                    alert("Data berhasil diubah");
+                    getSchools();
+                    resetForm();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        };
+
+        const resetForm = () => {
+            document.getElementById("nama_sekolah").value = "";
+            document.getElementById("kepala_sekolah").value = "";
+            document.getElementById("akreditasi").value = "";
+            document.getElementById("tahun_berdiri").value = "";
+            document.getElementById("jumlah_siswa").value = "";
+            document.getElementById("button").innerText = "Save";
+            document.getElementById("button").setAttribute("onclick", "saveData()");
+        };
+    </script>
+</body>
+
+</html>
